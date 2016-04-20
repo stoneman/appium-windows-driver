@@ -1,16 +1,47 @@
-appium-windows-driver
+Appium Windows Driver
 ===================
 
-Work in progress, stay tuned!
+Appium Windows Driver is a test automation tool for Windows devices. Appium Windows Driver automates UWP apps on Windows 10.  In the future it will automate other kinds of native, hybrid and mobile web apps on Windows 10 and Windows 10 mobile simulators and real devices. Appium Windows Driver is part of the [Appium](https://github.com/appium/appium) mobile test automation tool.
 
-## Watch
+## iOS Support
+Appium iOS Driver supports iOS versions 8+
+
+## Installation
+```
+npm install appium-windows-driver
+```
+
+## Usage
+Import Windows Driver, set [desired capabilities](http://appium.io/slate/en/1.5/?javascript#appium-server-capabilities) and create a session:
 
 ```
-npm run watch
+import { WindowsDriver } from `appium-windows-driver`
+
+let defaultCaps = {
+  app: 'your.app.id',
+  platformName: 'Windows'
+};
+
+let driver = new WindowsDriver();
+await driver.createSession(defaultCaps);
+```
+
+## Watch code for changes, re-transpile and run unit tests:
+
+```
+gulp
 ```
 
 ## Test
 
+
+You can run unit and e2e tests:
+
+
 ```
-npm test
+// unit tests:
+gulp once
+
+// e2e tests
+gulp e2e-test
 ```
