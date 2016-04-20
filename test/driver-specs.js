@@ -8,8 +8,21 @@ chai.should();
 chai.use(chaiAsPromised);
 
 describe('driver', () => {
-  it('should instantiate class', () => {
-    let driver = new WindowsDriver();
-    driver.should.exist;
+  describe('constructor', () => {
+    it('calls BaseDriver constructor with opts', () => {
+      let driver = new WindowsDriver({ foo: 'bar' });
+      driver.should.exist;
+      driver.opts.foo.should.equal('bar');
+    });
+  });
+
+  describe('createSession', () => {
+    it('should set sessionId', async () => {
+      let driver = new WindowsDriver({ app: 'myapp'}, false);
+      await driver.createSession({ cap: 'foo' });
+
+      driver.sessionId.should.exist;
+      driver.caps.cap.should.equal('foo');
+    });
   });
 });
