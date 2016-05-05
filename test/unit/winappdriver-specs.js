@@ -37,34 +37,13 @@ describe('WinAppDriverServer', () => {
   describe('#startSession', withMocks({ }, (mocks, S) => {
     let winAppDriver = new WinAppDriverServer(buildWinAppDriverOpts());
 
-    it('should wait for status, and start a session', async () => {
+    it('should start a session', async () => {
       let caps = { foo: 'bar' };
       mocks.jwproxy = S.sandbox.mock(winAppDriver.jwproxy);
-      mocks.jwproxy.expects("command").once()
-        .withExactArgs("/status", "GET")
-        .returns(Promise.resolve());
       mocks.jwproxy.expects("command").once()
         .withExactArgs("/session", "POST", { desiredCapabilities: caps })
         .returns(Promise.resolve());
       await winAppDriver.startSession(caps);
-      mocks.adb.verify();
-      mocks.jwproxy.verify();
-    });
-
-    it('should wait for selendroid to respond to /status', async () => {
-      let caps = { foo: 'bar' };
-      mocks.jwproxy = S.sandbox.mock(winAppDriver.jwproxy);
-      mocks.jwproxy.expects("command").once()
-        .withExactArgs("/status", "GET")
-        .returns(Promise.reject(new Error("nope")));
-      mocks.jwproxy.expects("command").once()
-        .withExactArgs("/status", "GET")
-        .returns(Promise.resolve());
-      mocks.jwproxy.expects("command").once()
-        .withExactArgs("/session", "POST", { desiredCapabilities: caps })
-        .returns(Promise.resolve());
-      await winAppDriver.startSession(caps);
-      mocks.adb.verify();
       mocks.jwproxy.verify();
     });
   }));
