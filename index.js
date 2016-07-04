@@ -5,6 +5,7 @@ import yargs from 'yargs';
 import { asyncify } from 'asyncbox';
 import { startServer } from './lib/server';
 import { WindowsDriver } from './lib/driver';
+import { commonCapConstraints } from './lib/desired-caps';
 
 const DEFAULT_HOST = "localhost";
 const DEFAULT_PORT = 4723;
@@ -19,7 +20,7 @@ if (require.main === module) {
   asyncify(main);
 }
 
-export { WindowsDriver };
+export { WindowsDriver,  commonCapConstraints };
 
 export default WindowsDriver;
 
