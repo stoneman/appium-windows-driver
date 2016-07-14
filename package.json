@@ -1,8 +1,11 @@
 {
   "name": "appium-windows-driver",
-  "description": "Description goes here.",
+  "version": "0.1.0",
+  "description": "Appium bridge to WinAppDriver",
   "keywords": [
-    "appium"
+    "appium",
+    "windows",
+    "WinAppDriver"
   ],
   "author": "appium",
   "license": "Apache-2.0",
