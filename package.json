@@ -43,10 +43,17 @@
   "devDependencies": {
     "appium-gulp-plugins": "^1.4.0",
     "appium-test-support": "0.0.5",
+    "babel-eslint": "^6.1.2",
     "chai": "^3.0.0",
     "chai-as-promised": "^5.1.0",
+    "eslint": "^3.0.1",
+    "eslint-config-appium": "0.0.6",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.10.3",
+    "eslint-plugin-mocha": "^4.0.0",
     "gulp": "^3.8.11",
     "sinon": "^1.17.4",
+    "wd": "^0.4.0",
     "yargs": "^3.10.0"
   }
 }
