@@ -1,4 +1,4 @@
-import { setupWAD } from '../../lib/installer';
+import { setupWAD, WAD_GUID } from '../../lib/installer';
 import { exec } from 'teen_process';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
@@ -10,7 +10,7 @@ describe('downloading WAD', () => {
   before(async () => {
     // uninstall WAD first
     try {
-      await exec('msiexec', ['/X{DDCD58BF-37CF-4758-A15E-A60E7CF20E41}', '/q']);
+      await exec('msiexec', [`/X{${WAD_GUID}}`, '/q']);
     } catch (err) {
       // if we get a 1605 error, that's ok, that means nothing was installed
       // if we get some other kind of error, we should fail this test
