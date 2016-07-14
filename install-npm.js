@@ -43,7 +43,9 @@ if (require.main === module) {
         return;
       }
       require('./build/lib/installer').setupWAD().catch(function (err) {
-        console.error(err.stack ? err.stack : err);
+        console.error(err.message);
+        console.error("WinAppDriver was not installed; please check your " +
+                      "system and re-run npm install if you need WinAppDriver");
       });
     });
   });
