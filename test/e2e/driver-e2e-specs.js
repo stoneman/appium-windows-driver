@@ -23,13 +23,16 @@ describe('Driver', () => {
     driver = wd.promiseChainRemote(TEST_HOST, TEST_PORT);
   });
 
+  afterEach(async () => {
+    await driver.quit();
+  });
+
   it('should run a basic session using a real client', async () => {
     await driver.init({
-      app: "Root",
+      app: "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App",
       platformName: "Windows",
       deviceName: "WindowsPC"
     });
-    let anyEls = await driver.elementsByXPath("//*");
-    anyEls.length.should.be.above(0);
+    await driver.elementByName("Calculator");
   });
 });
