@@ -58,20 +58,19 @@ describe('driver.js', () => {
       });
     });
 
-    // TODO: Implement or delete  
-    //describe('#getProxyAvoidList', () => {
-    //  it('should exist', () => {
-    //    driver.getProxyAvoidList.should.be.an.instanceof(Function);
-    //  });
-    //  it('should return jwpProxyAvoid array', () => {
-    //    let avoidList = driver.getProxyAvoidList('abc');
-    //    avoidList.should.be.an.instanceof(Array);
-    //    avoidList.should.eql(driver.jwpProxyAvoid);
-    //  });
-    //  it('should throw an error if session id is wrong', () => {
-    //    (() => { driver.getProxyAvoidList('aaa'); }).should.throw;
-    //  });
-    //});
+    describe('#getProxyAvoidList', () => {
+      it('should exist', () => {
+        driver.getProxyAvoidList.should.be.an.instanceof(Function);
+      });
+      it('should return jwpProxyAvoid array', () => {
+        const avoidList = driver.getProxyAvoidList('abc');
+        avoidList.should.be.an.instanceof(Array);
+        avoidList.should.eql(driver.jwpProxyAvoid);
+      });
+      it('should throw an error if session id is wrong', () => {
+        (() => { driver.getProxyAvoidList('aaa'); }).should.throw;
+      });
+     });
 
     describe('#canProxy', () => {
       it('should exist', () => {
